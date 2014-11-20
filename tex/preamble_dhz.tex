@@ -1,0 +1,146 @@
+\usepackage[left=3.0cm,right=3.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+    % \setcounter{tocdepth}{3}
+
+\usepackage[ngerman,english]{babel} % ngerman: new German orthography use
+                                    % english: the active language
+
+\usepackage{datetime}               % DATETIME package must be loaded after BABEL.
+    \renewcommand{\dateseparator}{.}
+    \setdefaultdate{\ddmmyyyydate}
+
+\usepackage[utf8]{inputenc}         % to input the special characters in most Latin languages
+\usepackage[T1]{fontenc}
+
+\usepackage[none]{hyphenat}         % for the usage of \nohyphens
+
+\usepackage[nottoc]{tocbibind}      % to disable the inclusion of TOC title
+
+\usepackage{graphicx}
+\usepackage{float}
+    \makeatletter\setlength{\@fptop}{0pt}\makeatother
+\usepackage[format=hang]{caption}
+\usepackage{subcaption}
+\usepackage{diagbox}
+\usepackage[export]{adjustbox}      % It is for 'max width=\textwidth' in \includegraphics.
+\usepackage{fixltx2e}               % to fix the problem of math mode in moving arguments like in headings
+\usepackage[bottom]{footmisc}       % to fix the problem that the footnote is not at the bottomm
+                                    % when the paragraph that contains the footnote is followed
+                                    % by figure who happens to appear on the next page.
+\usepackage{tabu}                   % flexible LaTeX tabulars
+\usepackage{multirow}
+\usepackage{pdflscape}              % to produce landscape pages in a mainly portrait document
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{dsfont}                 % double-stroke math font
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+% After the loading of "cleveref" comes the definition of new theorem environments
+% in order to apply \cref to user-defined theorem environment.
+
+% \usepackage{mdframed} % Be loaded after amsthm
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % table option enables the cell coloring
+
+\usepackage{xspace}
+
+\usepackage{lastpage} % require HYPERREF package
+
+\usepackage{varioref} % Be careful about the package order.
+\usepackage{hyperref} % See section 12.1 of cleveref manual.
+    \hypersetup{pdfstartview={XYZ null null 1.00}} % 100% zoom
+\usepackage{cleveref}
+    \crefname{equation}{equation}{equation}
+    \Crefname{equation}{Equation}{Equation}
+    \crefname{figure}{figure}{figure}
+    \Crefname{figure}{Figure}{Figure}
+    \crefname{table}{table}{table}
+    \Crefname{table}{Table}{Table}
+    % \crefname{chapter}{Chapter}{Chapter}
+    % \Crefname{chapter}{Chapter}{Chapter}
+
+    % [chapter] can be appended as an optional argument.
+    \newtheorem{mythm}{Theorem}
+    \newtheorem*{mythm*}{Theorem}
+    \Crefname{mythm}{Theorem}{Theorem}
+    \newtheorem{mydfn}{Definition}
+    \newtheorem*{mydfn*}{Definition}
+    \Crefname{mydfn}{Definition}{Definition}
+    \newtheorem{myprt}{Property}
+    \newtheorem*{myprt*}{Property}
+    \Crefname{myprt}{Property}{Property}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\definecolor{mygrey}{gray}{0.6}
+\usepackage{listings}
+\lstset{
+  language=matlab,
+  basicstyle=\small,       % the size of the fonts that are used for the code
+  keywordstyle=\sffamily,
+  identifierstyle=,
+  stringstyle=\color{mygrey},
+  commentstyle=\small\slshape\sffamily\color{mygrey},
+  %
+  breakatwhitespace=false, % sets if automatic breaks should only happen at whitespace
+  breaklines=true,         % sets automatic line breaking
+  showspaces=false,        % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,  % underline spaces within strings only
+  showtabs=false,          % show tabs within strings adding particular underscores
+  %
+  numbers=left,
+  stepnumber=2,
+  %
+  % frame=single,            % adds a frame around the code  
+  % frameround=tttt,
+  literate=
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}2
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+}
+
+
+% operators for general usage
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+
+% operators for Jacobian elliptic functions
+\DeclareMathOperator{\sn}{sn}
+\DeclareMathOperator{\cn}{cn}
+\DeclareMathOperator{\dn}{dn}
+
+
+% to tag the line in align environment
+% usage: \numberthis\label{...}
+\newcommand{\numberthis}{\addtocounter{equation}{1}\tag{\theequation}}
+
+% roman "d" inside math mode
+\newcommand{\mathrmd}[1][]{\mathrm{d}#1}
+
+% differential operator in the integral inside math mode
+\newcommand{\diff}[1][]{\,\mathrmd{#1}}
+
+% imaginary unit
+\newcommand{\im}[1][i]{\mathrm{#1}}
+
+% transpose operator T
+\newcommand{\tp}{\mathrm{T}}
+
+\newcommand{\wrt}{with respect to\xspace} % with respect to
+\newcommand{\rhs}{right-hand side\xspace} % right-hand side
+
+
+% to color the content beneath the underbrace of \underbrace
+% usage: in math mode \colorunderbrace[red]{aaaaaa}{bb}
+\newcommand{\colorunderbrace}[3][black!60]{\textcolor{#1}{\underbrace{\textcolor{black}{#2}}_{#3}}}
+\newcommand{\dateinfootnote}[1][\today]{\begingroup
+                                \let\thefootnote\relax
+                                \footnotetext{\sffamily\color{black!60} Date:~{\ifx&#1& \today \else{#1} \fi}}
+                                \endgroup}
