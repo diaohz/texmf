@@ -15,6 +15,7 @@
 
 \usepackage[nottoc]{tocbibind}      % to disable the inclusion of TOC title
 
+\usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{float}
     \makeatletter\setlength{\@fptop}{0pt}\makeatother
@@ -143,7 +144,8 @@
 % to color the content beneath the underbrace of \underbrace
 % usage: in math mode \colorunderbrace[red]{aaaaaa}{bb}
 \newcommand{\colorunderbrace}[3][black!60]{\textcolor{#1}{\underbrace{\textcolor{black}{#2}}_{#3}}}
-\newcommand{\dateinfootnote}[1][\today]{\begingroup
-                                \let\thefootnote\relax
-                                \footnotetext{\sffamily\color{black!60} Date:~{\ifx&#1& \today \else{#1} \fi}}
-                                \endgroup}
+\newcommand{\dateinfootnote}[1][\today]
+           {\begingroup
+                \let\thefootnote\relax
+                \footnotetext{\sffamily\color{black!60} Date:~{\ifx&#1& \today \else{#1} \fi}}
+            \endgroup}
